@@ -1,0 +1,10 @@
+li{
+    list-style: circle;
+    border: 1px black solid;
+    width: fit-content;
+    padding: 5px;
+}
+button{
+    background-color: black;
+    color: white;
+}

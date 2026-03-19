@@ -1,33 +1,40 @@
-function feltolt(articleElem,adatok={nev,datum,resztvett}) {
-    articleElem.innerHTML += `<li>
+function feltolt(ulElem,adatok={nev,datum,resztvett}, szoveg) {
+    ulElem.innerHTML += `<li>
                     <span>${adatok.nev}</span>
                     <span>${adatok.datum}</span>
                     <span>${adatok.resztvett}</span>
+                    <span>${szoveg}</span>
                     </li>`;
     
 }
 
-function statusz(articleElem,adatok={nev,datum,resztvett}){
+export function statusz(datum,resztvett){
     const maiDatum = new Date("2026-03-19");
-    let datum = new Date(adatok.datum);
-    if (adatok.resztvett == true) {
-        articleElem.innerHTML += `<span>lezárt</span>`;
-    }else if (datum-maiDatum <= 3) {
-        articleElem.innerHTML += `<span>közelgő</span>`;
-    }else if (datum-maiDatum <= 7) {
-        articleElem.innerHTML += `<span>hamarosan</span>`;
+    datum = new Date(datum);
+    let kulonbseg = (datum-maiDatum)/86400000;
+    let szoveg = "";
+
+    if (resztvett == true) {
+        szoveg = "lezárt";
+    }else if (kulonbseg < 0) {
+        szoveg = "nem ment el";
+    }else if (kulonbseg <= 3) {
+        szoveg = "közelgő";
+    }else if (kulonbseg <= 7) {
+        szoveg = "hamarosan";
     }else{
-        articleElem.innerHTML += `<span>ráér</span>`;
+        szoveg = "ráér";
     }
-    console.log(datum)
+    return szoveg;
 }
 
 
+
 export function megjelenit(LISTA) {
-    const articleElem = document.querySelector("article");
-    articleElem.innerHTML = "";
+    const ulElem = document.querySelector("ul");
+    ulElem.innerHTML = "";
     LISTA.forEach(function(esemeny,i){
-        feltolt(articleElem,esemeny);
-        statusz(articleElem,esemeny);
+        let szoveg = statusz(esemeny.datum,esemeny.resztvett);
+        feltolt(ulElem,esemeny,szoveg);
     });
 }
