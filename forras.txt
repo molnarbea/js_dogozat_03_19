@@ -1,0 +1,88 @@
+Adott az alábi eseménylista:
+
+[
+{
+nev: "Szülői értekezlet",
+datum: "2026-03-25",
+resztvett: false
+},
+{
+nev: "Konferencia",
+datum: "2026-04-10",
+resztvett: false
+},
+{
+nev: "Családi vacsora",
+datum: "2026-03-15",
+resztvett: true
+}
+]
+
+Helyezd el az adatok.js fájlban!
+
+Írj egy megjelenit() függvényt, amely megjeleníti az ajándékokat egy listában (ul > li).
+
+Minden ajándék külön sorban jelenjen meg
+
+Használj span tageket az adatokhoz
+
+Ha már megvan → ✔️
+
+Ha még nincs meg → ❗
+
+A két állapot különböző háttérszínt kapjon
+
+_________________
+
+A HTML-ben lévő három gombbal lehessen szűrni az eseményeket. 
+
+____________________
+
+Írj egy függvényt statusz néven:: statusz(datum, maiDatum, resztvett)
+
+"lezárt" → ha már részt vettél rajta
+
+"közelgő" → ha 3 vagy kevesebb nap van hátra
+
+"hamarosan" → ha 7 vagy kevesebb nap van hátra
+
+"ráér" → egyébként
+
+Segítség a dátumkezeléshez:
+
+const h = new Date(hatarido); Két dátum különbségét miliszekundumban kapjuk meg. 
+
+______________________
+
+Teszteld unit teszttel a statusz működését!
+
+___________________________________________________
+
+Bónusz feladatok
+A listában jelenjen meg a prioritás is
+
+A sorok színe változzon a prioritás alapján
+
+____________________________________________
+
+<main>
+
+<header>
+<h1>ESEMÉNYEK</h1>
+</header>
+
+<section>
+<button>Részt vettem</button>
+<button>Nem vettem részt</button>
+<button>Összes</button>
+</section>
+
+<article>
+<ul></ul>
+</article>
+
+<footer>
+<p>&copy; Saját név</p>
+</footer>
+
+</main>
